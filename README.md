@@ -7,7 +7,7 @@ This repository is a comprehensive collection of my Java learning journey — fr
 
 ## 📚 Contents
 - **Core Java** (Datatypes, Strings, OOP, etc.)
-- **Data Structures & Algorithms** (Arrays, Linked Lists, Trees, etc.)
+- **Data Structures & Algorithms** (Arrays, Patterns)
 - **LeetCode Solutions** (Daily problem-solving in Java)
 
 ## 🎯 Goal
@@ -23,10 +23,8 @@ JAVA-DSA-PRACTICE/
 │   └── operator.java
 │
 ├── Java_1D_Arrays/
-│   ├── Array_1D.java
-│   └── Array.java
-│
-├── Java_2D_Arrays/
+│   ├── Array.java
+│   └── Array_1D.java
 │   ├── 2D_array.java
 │   ├── 2D_array2.java
 │   └── 2D_ArrayList.java
