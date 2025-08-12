@@ -292,8 +292,8 @@ public class Main {
   static int printMaxElement(int[][] mat){
     int rows = mat.length ;  
     int cols = mat[0].length;
-    int max = mat[0][0];
-    // int max = Integer.MIN_VALUE;
+    // int max = mat[r][0];
+    int max = Integer.MIN_VALUE;
     for( int r = 0 ; r < rows ; r++){
       for(int c = 0 ; c < cols ; c++){
         if(mat[r][c]> max){
@@ -335,8 +335,8 @@ public class Main {
     int rows = mat.length ;  
     int cols = mat[0].length;
     int[] ans = new int[rows];
-    int max = mat[0][0];
-    // int max = Integer.MIN_VALUE;
+    // int max = mat[r][0];
+    int max = Integer.MIN_VALUE;
     for( int r = 0 ; r < rows ; r++){
       for(int c = 0 ; c < cols ; c++){
         if(mat[r][c]> max){
@@ -381,8 +381,8 @@ public class Main {
   static int printMaxLastRow(int[][] mat, int B){
     int rows = mat.length ;  
     int cols = mat[0].length;
-    int max = mat[B][0];
-    // int max = Integer.MIN_VALUE;
+    // int max = mat[B][0];
+    int max = Integer.MIN_VALUE;
     for(int c = 0 ; c < cols ; c++){
       if(mat[B][c] > max){
         max = mat[B][c];
@@ -421,6 +421,107 @@ public class Main {
 // B = 2
 
 //97
+
+//Given an N x N matrix, print the elements of the matrix in a wave form row-wise. For the first row, traverse from left to right, for the second row, traverse from right to left, and continue this alternating pattern for the remaining rows.
+
+
+import java.util.*;
+public class Main {
+  static void printWaveInRow(int[][] mat){
+    int rows = mat.length ;
+    int cols = mat[0].length;
+   
+    for(int r = 0 ; r < rows ; r++){
+      if(r%2 == 0 ){
+         // Left-to-right for even rows
+        for(int c = 0 ; c < cols ; c++){
+          System.out.print(mat[r][c] + " ");
+        }
+      }else{
+         // right-to-left for even rows
+        for(int c = cols-1 ; c>=0 ; c--){
+          System.out.print(mat[r][c] + " ");
+        }
+      }
+    }
+    return ;
+  }
+  public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+
+     int N = sc.nextInt();
+     int M = sc.nextInt();
+
+     int[][] mat = new int[N][M];
+
+     //Reading values 
+     for(int i = 0 ; i < N ; i++){
+      for(int j = 0 ; j < M ; j++){
+        mat[i][j] = sc.nextInt();
+      }
+     }
+     
+ printWaveInRow(mat);
+  }
+ 
+}
+
+//input
+3 3
+4 1 2
+7 4 4 
+3 7 4
+
+//output
+4 1 2 4 4 7 3 7 4
+
+//Assignment :Given 2D array A[][] and column index B return max of B column.
+input A :
+12 16 20 
+21 23 59
+
+int B:1
+finding max 
+
+output: 23
+
+import java.util.*;
+public class Main {
+  static void maxOfColumn(int[][] mat, int B){
+    int rows = mat.length;
+    int cols = mat[0].length;
+    
+    int max = Integer.MIN_VALUE;
+    for(int r = 0 ; r < rows ; r++){
+      for(int c = 0 ; c < cols ; c++){
+        if(mat[r][B] > max)
+       max = mat[r][B];
+      }
+
+    }
+    System.out.print(max);
+  }
+  public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+
+     int N = sc.nextInt();
+     int M = sc.nextInt();
+     
+
+     int[][] mat = new int[N][M] ;
+     int B = 1 ;
+
+     //looping over to taking input
+     for(int i = 0 ; i < N ; i++){
+      for(int j = 0 ; j< M ; j++){
+        mat[i][j] =sc.nextInt();
+      }
+     }
+
+     maxOfColumn(mat,B);
+  }
+}
+
 
 
 
