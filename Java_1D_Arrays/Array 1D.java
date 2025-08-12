@@ -200,8 +200,9 @@ public class Main {
 //     ArrayList<Integer> oddNums = new ArrayList<>();
 //     int n = al.size();
 //     for(int i = 0 ; i < n ; i++){
-//       if(al.get(i) %2 != 0){
-//         oddNums.add(al.get(i));
+//        int num = al.get(i);
+//       if(num %2 != 0){
+//         oddNums.add(num);
 //       }
 //     }
 //     return oddNums;
@@ -329,6 +330,44 @@ public class Main {
 // Print Elements at Even Index
 // Count Frequency of Each Element
 // Remove Duplicates from ArrayList
+
+
+//Removing Duplicates*******************************************
+import java.util.*;
+public class Main {
+  static ArrayList<Integer> uniqNumbers(ArrayList<Integer> al){
+    ArrayList<Integer> uniqNums = new ArrayList<>();
+    int n = al.size();
+    
+    for(int i = 0 ; i < n ; i++){
+      int count = 0 ;
+     for(int j = 0 ; j < n ; j++){
+      if(al.get(i) ==(al.get(j))){
+        count++;
+      }
+     }
+     if(count == 1){
+      uniqNums.add(al.get(i));
+     }
+    }
+    return uniqNums;
+  }
+  
+  public static void main(String[] args) {
+
+      ArrayList<Integer> al = new ArrayList<>();
+      al.add(1);
+      al.add(1);
+      al.add(3);
+      al.add(4);
+      al.add(5);
+      al.add(6);
+      al.add(7);
+      
+      System.out.println(al);
+      System.out.println(uniqNumbers(al));
+  }
+}
 
 //**********************************************Scaler Assignment Problems**************************
 // 1) You are given an integer array A and an integer B.
