@@ -13,39 +13,11 @@ This repository is a comprehensive collection of my Java learning journey — fr
 ## 🎯 Goal
 To solidify Java fundamentals while solving real coding challenges.
 
-## 📂 Project Structure
-```text
-JAVA-DSA-PRACTICE/
-├── Java_Basics/
-│   ├── if_statement.java
-│   ├── if_else2.java
-│   ├── basic.java
-│   └── operator.java
-│
-├── Java_1D_Arrays/
-│   ├── Array.java
-│   └── Array_1D.java
-│   ├── 2D_array.java
-│   ├── 2D_array2.java
-│   └── 2D_ArrayList.java
-│
-├── Java_Functions/
-│   ├── Function1.java
-│   └── Function2.java
-│
-├── Java_Loops/
-│   ├── forloop.java
-│   ├── loops.java
-│   └── loops_pattern.java
-│
-├── Java_Strings/
-│   └── String.java
-│
-├── Leetcode_Arrays/
-│   ├── 2Sum.java
-│   └── More/
-│
-├── docs/
-│   ├── summary.md
-│   └── important-tricks.md
-└── README.md
+### 📊 Data Structures & Algorithms (DSA)  
+
+#### 🔹 [Array Data Structure](../JAVA-DSA-PRACTICE/Leetcode_Arrays/)  
+Implementation of arrays and **solutions to various LeetCode problems with different approaches**.  
+
+- [ ] **2Sum** - leetcode 1
+- [ ] **RemoveDuplicates** - leetcode 26 
+ 
