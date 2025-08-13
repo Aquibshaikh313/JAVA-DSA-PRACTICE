@@ -45,70 +45,61 @@ public class Main {
 
 //****************Printing Unique elements*****************
 
-import java.util.*;
+import java.util.ArrayList; // Import ArrayList class so we can use it
 
 public class Main {
 
-    public static ArrayList<ArrayList<Integer>> Solve(ArrayList<ArrayList<Integer>> al) {
-        int n = al.size(); // number of rows
-        int m = al.get(0).size(); // number of columns
+  // This method takes a matrix (list of lists) and returns, for each row, the elements that appear exactly once
+  static ArrayList<ArrayList<Integer>> solve(ArrayList<ArrayList<Integer>> al) {
+    int n = al.size();                  // number of rows in the matrix
+    int m = al.get(0).size();            // number of columns in the first row
+    ArrayList<ArrayList<Integer>> ans = new ArrayList<>(); // final answer: one list of uniques per row
 
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+    // Loop through each row
+    for (int i = 0; i < n; i++) {
+      ArrayList<Integer> uniqElements = new ArrayList<>(); // store unique elements for this row
 
-        for (int i = 0; i < n; i++) {
-            ArrayList<Integer> uniq = new ArrayList<>();
-            for (int j = 0; j < m; j++) {
-                int ele = al.get(i).get(j);
-                if (freq(al.get(i), ele) == 1) {
-                    uniq.add(ele);
-                }
-            }
-            ans.add(uniq); // should be inside the loop
+      // Loop through each element in the row
+      for (int j = 0; j < m; j++) {
+        int ele = al.get(i).get(j);        // current element in row i, column j
+
+        // Check if this element appears exactly once in this row
+        if (freq(al.get(i), ele) == 1) {
+          uniqElements.add(ele);           // add it to the unique elements list for this row
         }
+      }
 
-        return ans;
+      ans.add(uniqElements);               // add this row's unique list to the final answer
     }
 
-    public static int freq(ArrayList<Integer> al, int K) {
-        int count = 0;
-        for (int i = 0; i < al.size(); i++) {
-            if (al.get(i)== K) { // use equals for Integer comparison
-                count++;
-            }
-        }
-        return count;
+    return ans; // return the list of lists containing unique elements for each row
+  }
+
+  // This method counts how many times 'K' appears in the given list 'al'
+  static int freq(ArrayList<Integer> al, int K) {
+    int count = 0;                     // counter for occurrences
+    for (int i = 0; i < al.size(); i++) {
+      if (al.get(i) == K) {             // if the current element matches K
+        count++;                        // increase the count
+      }
     }
+    return count;                       // return total times K appeared
+  }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) {
+    // Create sample input matrix
+    ArrayList<ArrayList<Integer>> data = new ArrayList<>();
+    data.add(new ArrayList<Integer>() {{ add(1); add(2); add(2); add(3); }}); // row 0
+    data.add(new ArrayList<Integer>() {{ add(4); add(4); add(5); add(6); }}); // row 1
 
-        System.out.print("Enter number of rows: ");
-        int n = sc.nextInt();
-        System.out.print("Enter number of columns: ");
-        int m = sc.nextInt();
+    // Call the solve method and store the result
+    ArrayList<ArrayList<Integer>> result = solve(data);
 
-        ArrayList<ArrayList<Integer>> input = new ArrayList<>();
-
-        System.out.println("Enter the matrix elements:");
-        for (int i = 0; i < n; i++) {
-            ArrayList<Integer> row = new ArrayList<>();
-            for (int j = 0; j < m; j++) {
-                row.add(sc.nextInt());
-            }
-            input.add(row);
-        }
-
-        ArrayList<ArrayList<Integer>> result = Solve(input);
-
-        System.out.println("Unique elements in each row:");
-        for (ArrayList<Integer> row : result) {
-            for (int val : row) {
-                System.out.print(val + " ");
-            }
-            System.out.println();
-        }
-    }
+    // Print the result
+    System.out.println(result); // Expected: [[1, 3], [5, 6]]
+  }
 }
+
 
 
 //Max in array -->
@@ -138,8 +129,8 @@ static int revArray(int[] array){
   }
 }
 
-
-// Collections.max() and Collections.min()
+//Below are methods for ArrayList -->
+// Collections.max() and Collections.min(),Collections.reverse(list)
 
 import java.util.*;
 public class Main {
