@@ -11,7 +11,7 @@ public class Main {
             return 0;
           }
           if(i!=j && mat[i][j]== 1){
-            return 0 ;
+            ret rn 0 ;
           }
         }
       }
@@ -219,6 +219,145 @@ public class Main {
 
         // Print the result properly
         System.out.println("Sum of matrices:");
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+  }
+}
+
+//Rotate by 90 deg clockwise
+import java.util.*;
+
+public class Main {
+
+    static void rotateNinetyDeg(int[][] mat) {
+        int n = mat.length;
+
+        // Step 1: Transpose the matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;
+            }
+        }
+
+     
+        // Step 2: Reverse each row
+        int firstCol = 0;
+        int lastCol = mat[0].length - 1;
+        
+       while(firstCol < lastCol){
+                 for(int i = 0; i< mat.length ; i++){
+            
+            int temp = mat[i][firstCol];
+            mat[i][firstCol] = mat[i][lastCol];
+            mat[i][lastCol] = temp;
+          }
+          firstCol++;
+          lastCol--;
+
+       }
+
+        // Print rotated matrix
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int[][] mat = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        rotateNinetyDeg(mat);
+    }
+}
+
+
+//Assignment starts from here------------------------------>
+
+//Divisible Matrix
+// Given 2 arrays of integers A and B
+// Return a 2D array of integers such that i-th row of the array contains list of values in A such that A[j]%B[i]==0 in A in sequential order can u explain me with solution 
+
+import java.util.*;
+
+public class Main {
+  static ArrayList<ArrayList<Integer>> divisibleMat(int[] A , int[] B){
+      ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+      for(int i = 0 ; i < B.length ; i++){
+        ArrayList<Integer> row = new ArrayList<>();
+        for(int j = 0 ; j < A.length ; j++){
+          if(A[j]% B[i] == 0){
+              row.add(A[j]);
+          }
+        }
+        result.add(row);
+      }
+      return result;
+      
+  }
+
+  public static void main(String[] args) {
+    int[] A = {1, 2, 3, 4};
+    int[] B = {2, 3};
+
+    ArrayList<ArrayList<Integer>> ans = divisibleMat(A,B);
+    for(ArrayList<Integer> row : ans){
+         System.out.println(row);
+    }
+   
+  }
+}
+
+//Substracting two matrices
+import java.util.*;
+public class Main {
+  
+  static int[][] subTwoMat(int[][] A, int[][] B){
+    int n = A.length; //since its a square matrix
+    int m = A[0].length;
+
+    int[][] C = new int[n][m];
+   
+    for(int i = 0 ; i < n ; i++){
+      for(int j = 0 ; j<m ;j++){
+        C[i][j] = A[i][j]  - B[i][j] ;
+      }
+    }
+    return C;
+    
+  }
+  public static void main(String[] args) {
+      int[][] A = 
+      {
+        {1,2},
+        {3,4},
+        {5,6}
+      };
+      int[][] B = 
+      {
+        {1,1},
+        {1,1},
+        {1,1}
+      };
+      
+
+
+    int[][] result = subTwoMat(A, B);
+
+        // Print the result properly
+        System.out.println("minus of matrices:");
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
                 System.out.print(result[i][j] + " ");

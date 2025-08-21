@@ -238,3 +238,36 @@ ArrayList<ArrayList<String>> createStairCasePattern(int n) {           // Method
 
     return ans;                                                        // Return the final 2D staircase pattern
 }
+
+
+//************************Sum of Column****************************
+import java.util.*;
+
+public class Main {
+
+    static ArrayList<Integer> sumOfCols(ArrayList<ArrayList<Integer>> A) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        // Loop over columns
+        for (int j = 0; j < A.get(0).size(); j++) {
+            int sum = 0;
+            // Loop over rows
+            for (int i = 0; i < A.size(); i++) {
+                sum += A.get(i).get(j);
+            }
+            result.add(sum);  // add sum of this column
+        }
+        return result;  // return after outer loop
+    }
+
+    public static void main(String[] args) {
+        // Proper way to create a 2D ArrayList
+        ArrayList<ArrayList<Integer>> A = new ArrayList<>();
+        A.add(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        A.add(new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+
+        ArrayList<Integer> ans = sumOfCols(A);
+
+        System.out.println(ans);
+    }
+}
