@@ -43,7 +43,7 @@ public class Main {
   }
 }
 
-//Finding the Longest string ------>
+//Finding the Longest word in a string ------>
 public class Main {
   static int longestWordLength(String line) {
     int maxLength = 0;
