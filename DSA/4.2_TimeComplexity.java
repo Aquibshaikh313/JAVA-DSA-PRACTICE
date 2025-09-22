@@ -72,7 +72,7 @@ for(int i = 0 ; i < N ; i++){
 for(int j = i ; j< N ; j++){
 //statement
 }} 
-//O(n)
+//O(n^2)
 
 int count = 0 ;
 while(N > 0){
