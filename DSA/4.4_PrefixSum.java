@@ -48,7 +48,7 @@ public class Main {
     for(int i = 1; i < n ; i++){
       pf[i] = pf[i-1] + A[i];
     }
-
+ 
     int[] result = new int[nQ];
     for(int i = 0 ; i < nQ ; i++){
       int L = B[i][0];

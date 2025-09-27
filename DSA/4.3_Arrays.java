@@ -6,7 +6,7 @@ public class GoodPairChecker {
         int n = A.length;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                if (A[i] + A[j] == B) {
+                if (A[i] + A[j] == B ) {
                     return true;
                 }
             }
@@ -179,19 +179,19 @@ public class Main {
 
      System.out.print(solve(A) + " seconds");
   }
-}
+} // output : 8 seconds
 
 
 // 3: What will be the output of the following code?
 
 // class Main {
-//    static void fun(int[]arr) {
+//    static void fun(int[] arr) {
 //        arr[3] = 98;
 //        return;
 //    }
 
 //    public static void main(String args[]) {
-//        int[]arr = {10,20,30,40,50};
+//        int[] arr = {10,20,30,40,50};
 //        fun(arr);
 //        System.out.println(arr[3]);
 //    }
@@ -234,22 +234,60 @@ public class Main {
 // You are given an integer array A. You have to find the second largest element/value in the array or report that no such element exists.
 
 import java.util.Arrays;
+
 public class Main {
-  static int secondLargElem(int[] A){
-    Arrays.sort(A);
-    int n = A.length;
-    for(int i = n-1 ; i >= 0 ; i-- ){
-      if(A[i] != A[n-1]){
-        return 1;
-      }
+    static int secondLargElem(int[] A) {
+        Arrays.sort(A); // sort in ascending order
+        int n = A.length;
+        
+        // Start from the second last element and find the first smaller than max
+        for (int i = n - 2; i >= 0; i--) {
+            if (A[i] != A[n - 1]) {
+                return A[i];  // ✅ return the actual second largest
+            }
+        }
+        return -1; // if all elements are equal, no second largest exists
     }
-    return -1;
 
-  }
-  public static void main(String[] args) {
-     int[] A = {2,1,2} ; // 1
-    //  int[] A = {2}; // -1
+    public static void main(String[] args) {
+        int[] A = {2, 1, 2}; // expected output: 1
+        // int[] A = {2};    // expected output: -1
 
-     System.out.println(secondLargElem(A));
-  }
+        System.out.println(secondLargElem(A));
+    }
 }
+
+//more efficient way of solving the above pb
+public class Main {
+    static int secondLargElem(int[] A) {
+        if (A.length < 2) return -1; // not enough elements
+
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+
+        for (int num : A) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+        }
+
+        return (secondLargest == Integer.MIN_VALUE) ? -1 : secondLargest;
+    }
+
+    public static void main(String[] args) {
+        int[] A1 = {2, 1, 2};      // → 1
+        int[] A2 = {2};            // → -1
+        int[] A3 = {5, 5, 5};      // → -1
+        int[] A4 = {7, 3, 9, 5};   // → 7
+
+        System.out.println(secondLargElem(A1));
+        System.out.println(secondLargElem(A2));
+        System.out.println(secondLargElem(A3));
+        System.out.println(secondLargElem(A4));
+    }
+}
+
+
