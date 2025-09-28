@@ -94,3 +94,50 @@ public class Main {
      System.out.print(solve(A));
   }
 }
+
+// finding length of smallest subarray containing min and max
+
+public class Main {
+    static int minSubarrayLen(int[] A, int n){
+        int min = A[0];
+        int max = A[0];
+
+        // find min and max
+        for(int i = 1 ; i < n ; i++){
+            if(A[i] > max){
+                max = A[i];
+            } else if(A[i] < min){
+                min = A[i];
+            }
+        }
+
+        int minIndex = -1;
+        int maxIndex = -1;
+        int ans = Integer.MAX_VALUE;
+
+        // second pass
+        for(int i = 0 ; i < n ; i++){
+            if(A[i] == min){
+                minIndex = i ;
+                if(maxIndex != -1){
+                    ans = Math.min(ans, Math.abs(maxIndex - minIndex) + 1);
+                }
+            }
+
+            if(A[i] == max){
+                maxIndex = i;
+                if(minIndex != -1){
+                    ans = Math.min(ans, Math.abs(maxIndex - minIndex) + 1);
+                }
+            }
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int[] A = {1,2,3,1,3,4,6,4,6,1};
+        int n = A.length;
+
+        System.out.print(minSubarrayLen(A,n));
+    }
+}
