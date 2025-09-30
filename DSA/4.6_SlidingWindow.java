@@ -72,3 +72,105 @@ public class Solution {
 return 0;
     }
   }
+
+  //Maximum subarray sum of len k
+  // Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+public class Main {
+  static long maxSumOfLenK(int[] A,int k){
+    int n = A.length;
+    long sum = 0 ;
+   //first calculating the sum of 1st window 
+   for(int i = 0 ; i < k ; i++){
+    sum += A[i];
+   }
+
+   long ans = sum;
+   // Go forward by one window
+   int s = 1 , e = k;
+   while(e < n){
+    sum = sum - A[s-1] + A[e];
+
+    ans = Math.max(ans,sum);
+    s++;
+    e++;
+   }
+   return ans;
+  }
+  public static void main(String[] args) {
+     int[] A = {2,3,9,-1,7,1,0};
+     int k = 4;
+     
+     System.out.print(maxSumOfLenK(A,k));
+  }
+}
+
+//without using while loop in above pb
+public class Main {
+  static long maxSumOfLenK(int[] A,int k){
+    int n = A.length;
+    long sum = 0 ;
+   //first calculating the sum of 1st window 
+   for(int i = 0 ; i < k ; i++){
+    sum += A[i];
+   }
+
+   long ans = sum;
+   // Go forward by one window
+   for( int i = k ; i < n ; i++){
+    sum = sum - A[i-k] + A[i] ;
+    ans = Math.max(ans,sum);
+   }
+
+   return ans;
+  }
+  public static void main(String[] args) {
+     int[] A = {2,3,9,-1,7,1,0};
+     int k = 4;
+     
+     System.out.print(maxSumOfLenK(A,k));
+  }
+}
+
+//Easy level pbs based on above :
+public class Main {
+  static int maxSumLen2(int[] A){
+    int sum = A[0] + A[1]; // first window
+    int ans = sum;
+    for(int i=2;i<A.length;i++){
+      sum = sum - A[i-2] + A[i]; // slide window
+      ans = Math.max(ans, sum);
+    }
+    return ans;
+  }
+
+  public static void main(String[] args){
+    int[] A = {5,1,3,2,4};
+    System.out.println(maxSumLen2(A)); // Output: 6
+  }
+}
+
+//Calculating total sum of subarray
+public class Main {
+  static long totalSum(int[] A){
+    int n = A.length;
+    long sum = 0 ;
+ 
+ for(int i = 0 ; i < n ; i++){
+  int s = i + 1 ;
+  int e = n-i;
+
+  long freq = s * e;
+  sum += (freq * A[i]); // contribution technique
+ }
+  
+
+   return sum;
+  }
+  public static void main(String[] args) {
+     int[] A = {2,5};
+     
+     
+     System.out.print(totalSum(A));
+  }
+}
