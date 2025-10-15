@@ -1,9 +1,57 @@
+// Count pairs
+// TC: O(N) & SC: O(1)
+public class Main {
+  static int countPairs(char[] arr){
+    int n = arr.length;
+    int countG = 0 ;
+    int countPair = 0 ;
+
+    for(int i = n - 1 ; i >= 0 ; i--){
+      if(arr[i] == 'g'){
+        countG++;
+      }if(arr[i] == 'a'){
+        countPair += countG;
+      }
+    }
+    return countPair;
+  }
+  public static void main(String[] args) {
+     char[] arr = {'a','d','g','a','g','a','g','f','g'};
+
+     System.out.print(countPairs(arr)); 
+  }
+} //output --> 6
+
+
+import java.util.Arrays;
+public class Main {
+  static int[] allSubarrays(int[] arr){
+    int n = arr.length;
+    
+    for(int s = 0 ; s < n ; s++){
+      for(int e = s ; e < n ; e++){
+        for(int i = s ; i <=e ; i++){
+          System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+      }
+    }
+    return arr;
+  }
+  public static void main(String[] args) {
+     int[] arr = {2,8,-1,4};
+     System.out.print(Arrays.toString( allSubarrays(arr))); 
+  }
+}
+
+
+//Assignment problems starts ---------------->
 // Given an array of length N, find subarray if the start and end is given.
 
 public class Main {
   static int[] rangeArr(int[] arr, int B , int C){
-    int s = B;
-    int e = C;
+    int s = B;//start
+    int e = C;//end
     for( ; s<=e ; s++){
       System.out.print(arr[s] + ",");
     }
@@ -140,4 +188,31 @@ public class Main {
 
         System.out.print(minSubarrayLen(A,n));
     }
-}
+} //output 2
+
+
+
+// import java.util.Arrays;
+public class Main {
+  static int maxSubSum(int[] C, int A , int B){
+    int n = C.length;
+
+    int ans = Integer.MIN_VALUE ;
+    for(int i = 0 ; i < A ; i++){
+      int sum = 0 ;
+      for(int j = i ; j < A ; j++){
+        sum += C[j];
+        if(B <= sum){
+          ans = Math.max(ans,sum);
+        }
+      }
+    }
+    return ans;
+
+  }
+  public static void main(String[] args) {
+     int[] C = {2,1,3,4,5};
+     int A = 5, B = 12;
+     System.out.print(maxSubSum(C,A,B)); 
+  }
+}//output --> 15
