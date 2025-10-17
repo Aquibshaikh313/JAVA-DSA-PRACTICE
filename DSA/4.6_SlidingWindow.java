@@ -30,6 +30,7 @@ public class Solution {
 // Use this editor to write, compile and run your Java code online
 public class Main {
   static long subarraySum(int[] A){
+    //we are taking long because of overcome overflow
     long count = 0 ;
     for(int i = 0 ; i < A.length; i++){
       long s = i + 1;
@@ -76,7 +77,8 @@ return 0;
   //Maximum subarray sum of len k
   // Online Java Compiler
 // Use this editor to write, compile and run your Java code online
-public class Main {
+// TC : O(N) , SC : O(1)
+public class Main { 
   static long maxSumOfLenK(int[] A,int k){
     int n = A.length;
     long sum = 0 ;
