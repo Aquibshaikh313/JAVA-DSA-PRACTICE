@@ -1,3 +1,46 @@
+// finding the pairs divisible by m
+// TC O(N) and SC O(M)
+
+public class Main {
+  static int countPairs(int[] arr, int m) {
+   int n = arr.length;
+   int[] freq = new int[m]; // size should be the size of m
+   int count = 0 ; int pair = 0 ;
+   for(int i = 0 ; i < n ; i++){
+    int rem = arr[i]%m; // remainder
+    
+    if(rem == 0){
+      pair = 0;
+    }else{
+        pair = m - rem; // i.e the pair we are looking for
+        
+    }
+     count += freq[pair];
+    freq[rem]++;
+   }
+
+   return count;
+   
+  }
+
+  
+
+  public static void main(String[] args) {
+     int[] arr = {4,3,6,3,8,12};
+     int m = 6;
+
+    System.out.print(countPairs(arr, m));
+  }
+}
+
+| i | arr[i] | rem | pairRem | countBefore       | freq[] after  |
+| - | ------ | --- | ------- | ----------------- | ------------- |
+| 0 | 4      | 4   | 2       | 0                 | [0,0,0,0,1,0] |
+| 1 | 3      | 3   | 3       | 0                 | [0,0,0,1,1,0] |
+| 2 | 6      | 0   | 0       | 0                 | [1,0,0,1,1,0] |
+| 3 | 3      | 3   | 3       | +1 (from freq[3]) | [1,0,0,2,1,0] |
+| 4 | 8      | 2   | 4       | +1 (from freq[4]) | [1,0,1,2,1,0] |
+| 5 | 12     | 0   | 0       | +1 (from freq[0]) | [2,0,1,2,1,0] |
 
 
 //finding the highest common factor -->
