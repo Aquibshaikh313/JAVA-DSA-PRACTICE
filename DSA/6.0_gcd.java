@@ -123,3 +123,6 @@ gcdOfArray(arr, 3)  	3	       return arr[3]           1
 gcdOfArray(arr, 2)  	2  	     gcd(3, 1)	             1
 gcdOfArray(arr, 1)  	1     	 gcd(47, 1)	             1
 gcdOfArray(arr, 0)  	0	       gcd(2, 1)	             1
+
+
+
