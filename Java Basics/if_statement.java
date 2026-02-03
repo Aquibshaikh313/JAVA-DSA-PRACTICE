@@ -41,6 +41,11 @@ public class Main {
       // }
       // System.out.print(a+b);
 
+      //output for above 
+      // a scored half
+      // b scored half
+      // 102
+
       //Quiz:
       int a = 50,b=50;
       if(5 > 4){
