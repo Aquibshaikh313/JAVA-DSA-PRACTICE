@@ -58,6 +58,36 @@ public class Main {
 //    }
 // }
 
+//Finding out the for T numbers wheather they are armstrong or not
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+
+    Scanner scn = new Scanner(System.in);
+    int T= scn.nextInt();
+    
+    for(int i = 1 ; i <= T ; i++){
+          
+          int n = scn.nextInt();
+          int copy = n;
+          int sum = 0;
+
+          while(n > 0){
+            int d = n % 10 ;
+            sum = sum + (d*d*d);
+            n/=10;
+          }
+
+          if(sum == copy){
+            System.out.println("Armstrong");
+          }else{
+            System.out.println("Not Armstrong");
+          }
+      
+    }
+  }
+}
+
 //N number of stars in row
 // Scanner scn = new Scanner(System.in);
 // int N = scn.nextInt();
@@ -113,8 +143,8 @@ public class Main {
 // Alternate method
 // Scanner scn = new Scanner(System.in);
 // int N = scn.nextInt();
-// for(int i=1; i<=N; i++){
-//   for(int j=N;j>=i;j--){
+// for(int i=N; i>=1; i--){
+//   for(int j=1;j<=i;j++){
 //     System.out.print(" * ");
 //   }
 
