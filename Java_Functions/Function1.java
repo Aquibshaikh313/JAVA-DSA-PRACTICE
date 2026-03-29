@@ -1,3 +1,63 @@
+//calculating factorial
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+     Scanner scn = new Scanner(System.in);
+
+     int n = scn.nextInt();
+     int r = scn.nextInt();
+
+     //calculating n!
+     int nf = 1;
+     for(int i = 1; i <= n ; i++){
+      nf = nf * i ;
+     }
+    //  System.out.println(nf);
+
+     //calculating r factorial
+     int rf = 1;
+     for(int i = 1 ; i <= r ; i++){
+      rf = rf * i ;
+     }
+    //  System.out.println(rf);
+
+     //calculating nfr factorial
+     int nfr = 1 ;
+     for(int i = 1; i <= (n-r); i++){
+      nfr = nfr * i;
+     }
+    //  System.out.println(nfr);
+
+     System.out.println(nf/(rf* nfr));
+
+
+  }
+}
+
+//using function
+import java.util.*;
+
+public class Main {
+
+  static int fact(int x){
+    int f = 1;
+    for(int i = 1; i <= x; i++){
+      f *= i;
+    }
+    return f;
+  }
+
+  static void nfr(int n, int r){
+    int result = fact(n) / (fact(r) * fact(n - r));
+    System.out.println(result);
+  }
+
+  public static void main(String[] args) {
+    nfr(6, 4);
+  }
+}
+
+
 
 //*********************************************************Printing factorial***********************************************************
 // import java.util.*;

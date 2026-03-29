@@ -249,7 +249,9 @@ public class Main {
 // import java.util.*;
 // public class Main {
 //   public static int power(int A, int B){
-//     int result = (int)Math.pow(A,B);Math.pow returns double therefore we typecast into int by using (int) before it
+//     int result = (int)Math.pow(A,B);
+
+// Math.pow returns double therefore we typecast into int by using (int) before it
 
 //     return result;
 
