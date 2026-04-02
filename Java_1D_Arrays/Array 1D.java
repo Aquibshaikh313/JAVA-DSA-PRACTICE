@@ -177,7 +177,7 @@ public class Main {
 //   }
 //   public static void main(String[] args) {
 //     ArrayList<Integer> al = new ArrayList<>();
-//       al.add(1); //[1]
+//       al.add(1); //[1]   
 //       al.add(2);//[1,2]
 //       al.add(3);//[1,2,3]
 //       al.add(4);//[1,2,3,4]
@@ -400,45 +400,52 @@ public class Main {
 // } output 2
 
 // 2) checking if the array is sorted or not 
-// import java.util.*;
+
 // public class Main {
-//    static boolean sortedArr(int[] A){
-//     int n = A.length;
-//     int count = 0 ;
-//       for(int i = 0 ; i < n - 1; i++){ //n-1 bcz since we are doing A[i+1] it will go beyond n and will give us error
-       
-//         if(A[i] > A[i+1]){
-//         return false;
-//         }
+//   static int isSorted(int[] arr){
+//     int n = arr.length;
+    
+//     for(int i = 0 ; i < n - 1 ; i++){
+//       if(arr[i] > arr[i+1]){
+//         return 0;
 //       }
-//       return true;
+           
+//     }
+//     return 1;
+    
 //   }
 //   public static void main(String[] args) {
-    
-//      int[] A = {1,2,3,4};
-//      System.out.println(sortedArr(A));
+//       int[] arr = {1,2,3};
+      
+//       System.out.print(isSorted(arr));
+
 //   }
-// } //true
+// }
 
 // 3)Given an array A of N integers. 
 // Count the number of elements that have at least 1 elements greater than itself.
-// import java.util.*;
-// public class Main {
-//    static int greaterCount(int[] A){
-//     int n = A.length;
-//     int count = 0 ;
-//       for(int i = 0 ; i < n-1; i++){
-       
-//         if(A[i] > A[i+1]){
-//         count ++ ;
-//         }
-//       }
-//       return count;
-//   }
-//   public static void main(String[] args) {
-    
-//      int[] A = {5,5,1}; // if the input is {1,2,4,4,5} //output will be 4 becoz 4,4 are two different elements even if they are same
+public class Main {
+  static int solve(int[] arr){
+    int n = arr.length;
+    int max= arr[0];
+    int maxCount = 1;
+    for(int i = 1 ; i < n ; i++){
+      if(arr[i] > max){
+        max = arr[i];
+        maxCount = 1;
+      }else if(arr[i] == max){
+        maxCount += 1;
+      }
+           
+    }
+    return arr.length - maxCount;
    
-//      System.out.println(greaterCount(A));
-//   }
-// }//output for given input --> 1
+    
+  }
+  public static void main(String[] args) {
+      int[] arr = {5,5,1};
+      
+      System.out.print(solve(arr));
+
+  }
+}
