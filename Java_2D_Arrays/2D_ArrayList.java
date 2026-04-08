@@ -43,6 +43,54 @@ public class Main {
 1 2 3       1 2 3
 4 5 6       4 5 6
 
+
+// Printing Even numbers from ArrayList
+import java.util.*;
+public class Main {
+  static ArrayList<ArrayList<Integer>> evenNumber(ArrayList<ArrayList<Integer>> al){
+    int rows = al.size();
+
+    ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+    for(int r = 0 ; r < rows ; r++){
+      int cols = al.get(r).size();
+      ArrayList<Integer> evenNums = new ArrayList<>();
+      for(int c = 0 ; c < cols ; c++){
+        int elem = al.get(r).get(c);
+        if(elem % 2 == 0 ){
+          evenNums.add(elem);
+        }
+      }
+      ans.add(evenNums);
+
+    }
+    return ans;
+  }
+  public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+
+    //Taking N-rows and M-colums
+    int N = scn.nextInt();
+    int M = scn.nextInt();
+
+    //taking 2D arraylist
+    ArrayList<ArrayList<Integer>> al = new ArrayList<>();
+
+    //Taking input elements 
+    for(int i = 0 ; i < N ; i++){
+      ArrayList<Integer> row = new ArrayList<>();
+       for(int j = 0 ; j < M ; j++){
+        int col = scn.nextInt();
+         row.add(col);
+       }
+       al.add(row);
+      
+    }
+    
+
+    System.out.print(evenNumber(al));
+  }
+}
+
 //****************Printing Unique elements*****************
 
 import java.util.ArrayList; // Import ArrayList class so we can use it

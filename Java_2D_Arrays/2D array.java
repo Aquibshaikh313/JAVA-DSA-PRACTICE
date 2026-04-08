@@ -506,7 +506,7 @@ public class Main {
 
      int N = sc.nextInt();
      int M = sc.nextInt();
-     
+     //Reading N-rows and 
 
      int[][] mat = new int[N][M] ;
      int B = 1 ;
