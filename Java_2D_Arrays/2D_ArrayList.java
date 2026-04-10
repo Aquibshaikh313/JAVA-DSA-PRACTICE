@@ -238,30 +238,51 @@ public class Main {
 
 
 //********************Extracting vowels frm string********************
-ArrayList<ArrayList<Character>> extractVowels(ArrayList<String> string) {  // Method that takes a list of strings and returns a list of vowel lists
+import java.util.*;
 
-    ArrayList<ArrayList<Character>> vowelsList = new ArrayList<>();       // This will hold lists of vowels for each string
+public class Main {
 
-    ArrayList<Character> vowels = new ArrayList<>();                      // Create a list to store all vowels
+  static ArrayList<ArrayList<Character>> extractVowels(ArrayList<String> strings){
 
-    Collections.addAll(vowels, 'a', 'e', 'i', 'o', 'u',                    // Add lowercase and uppercase vowels to the list
-                              'A', 'E', 'I', 'O', 'U');                    // So we can match against any case
+    ArrayList<ArrayList<Character>> vowels2dList = new ArrayList<>();
 
-    for (int i = 0; i < string.size(); i++) {                              // Loop through each string in the input list
-        String s = string.get(i);                                          // Get the current string
-        ArrayList<Character> vowelList = new ArrayList<>();              // List to store vowels from the current string
+    ArrayList<Character> vowels = new ArrayList<>();
+    Collections.addAll(vowels,'a','e','i','o','u','A','E','I','O','U');
 
-        for (int j = 0; j < s.length(); j++) {                            // Loop through each character in the string
-            char c = s.charAt(j);                                         // Get character at index j
-            if (vowels.contains(c)) {                                     // Check if the character is a vowel
-                vowelList.add(c);                                         // If yes, add it to the vowel list
-            }
+    for(int i = 0 ; i < strings.size(); i++){
+      ArrayList<Character> vowelsList = new ArrayList<>();
+
+      String s = strings.get(i);
+
+      for(int j = 0 ; j < s.length() ; j++){
+        char c = s.charAt(j);
+
+        if(vowels.contains(c)){
+          vowelsList.add(c);
         }
+      }
 
-        vowelsList.add(vowelList);                                        // Add the vowel list of the current string to the main list
+      vowels2dList.add(vowelsList);
     }
 
-    return vowelsList;                                                    // Return the final list of lists of vowels
+    return vowels2dList;
+  }
+
+  public static void main(String[] args) {
+      Scanner scn = new Scanner(System.in);
+
+      int N = scn.nextInt();
+
+      ArrayList<String> strings = new ArrayList<>();
+
+      for(int i = 0 ; i < N ; i++){
+        String str = scn.next();
+           
+        strings.add(str);
+      }
+
+      System.out.println(extractVowels(strings));
+  }
 }
 
 
