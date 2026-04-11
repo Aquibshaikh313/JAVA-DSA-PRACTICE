@@ -90,7 +90,7 @@ public class Main {
     //2D matrix
     int[][] mat = new int[N][M];
 
-    //iterating over it 
+    //taking input elements
     for(int i = 0 ; i < N ; i++){
       for(int j = 0 ; j < M ; j++){
         mat[i][j] = sc.nextInt();
@@ -167,7 +167,7 @@ public class Main {
     for(int i = 0 ; i < n ; i++){
       System.out.println(mat[i][i]);
     }
-    return;
+    
   }
   public static void main(String[] args) {
       int[][] mat = 
@@ -228,6 +228,30 @@ public class Main {
   }
 }
 
+// Adding main diagonal sum
+import java.util.*;
+
+public class Main {
+    
+    static int sum(int[][] mat){
+        int topper = 0;
+        for(int i = 0; i < mat.length; i++){
+            topper += mat[i][i];
+        }
+        return topper;
+    }
+
+    public static void main(String[] args) {
+        int[][] mat = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+
+        System.out.println(sum(mat));
+    }
+}
+
 //Rotate by 90 deg clockwise
 import java.util.*;
 
@@ -251,8 +275,7 @@ public class Main {
         int lastCol = mat[0].length - 1;
         
        while(firstCol < lastCol){
-                 for(int i = 0; i< mat.length ; i++){
-            
+          for(int i = 0; i< mat.length ; i++){
             int temp = mat[i][firstCol];
             mat[i][firstCol] = mat[i][lastCol];
             mat[i][lastCol] = temp;
@@ -367,4 +390,47 @@ public class Main {
   }
 }
 
+
+// Column sum using ArrayList
+public class Solution {
+    public ArrayList<Integer> solve(ArrayList<ArrayList<Integer>> A) {
+    ArrayList<Integer> ans = new ArrayList<>();
+    int rows = A.size();
+    int cols = A.get(0).size();
+   
+    for(int c = 0 ; c < cols ; c++){
+         int sum = 0 ;
+
+        for(int r = 0 ; r < rows ; r++){
+          sum+= A.get(r).get(c);
+
+        }
+        ans.add(sum);
+    }
+    return ans;
+    
+    }
+}
+
+//sum of diagonal from both the sides
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+      int sum = 0 ;
+      int n = mat.length;
+
+      for(int i = 0 ; i < n ; i++){
+        sum += mat[i][i];
+        sum += mat[i][n-i-1];
+      }
+
+      //now if the matrix is odd we need to subtract the duplicate element
+      if(n%2 != 0){
+        sum -= mat[n/2][n/2];
+      }
+
+      return sum;
+        
+    }
+}
 
