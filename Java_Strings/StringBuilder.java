@@ -45,37 +45,39 @@ public class Main {
 
 //Finding the Longest word in a string ------>
 public class Main {
-  static int longestWordLength(String line) {
-    int maxLength = 0;
-    int currLength = 0;
-    int n = line.length();
 
-    for (int i = 0; i < n; i++) {
-      char currChar = line.charAt(i);
-      if (currChar != ' ') {
-        currLength++;
-      } else {
-        if (currLength > maxLength) {
-          maxLength = currLength;
+    // Method to find length of longest word
+    static int longestWordLength(String line) {
+        int maxLength = 0;
+        int currLength = 0;
+
+        for (int i = 0; i < line.length(); i++) {
+            char currChar = line.charAt(i);
+
+            if (currChar != ' ') {
+                currLength++;  // counting letters of current word
+            } else {
+                if (currLength > maxLength) {
+                    maxLength = currLength;  // update max if needed
+                }
+                currLength = 0;  // reset for next word
+            }
         }
-        currLength = 0;
-      }
+
+        // check last word (important!)
+        if (currLength > maxLength) {
+            maxLength = currLength;
+        }
+
+        return maxLength;
     }
 
-    // Final check for the last word
-    if (currLength > maxLength) {
-      maxLength = currLength;
+    public static void main(String[] args) {
+        String line = "hi hello bro";
+        int result = longestWordLength(line);
+        System.out.println("Longest word length: " + result);
     }
-
-    return maxLength;
-  }
-
-  public static void main(String[] args) {
-    String line = "hi hello bro";
-    System.out.println(longestWordLength(line));  // Output: 5 ("hello")
-  }
 }
-
 
 
 //****************alphaNumericSum of digits in string**************
