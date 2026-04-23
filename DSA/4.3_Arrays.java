@@ -1,24 +1,25 @@
 // 1:  Problem Description :
 // Given an array A and an integer B. A pair(i, j) in the array is a good pair if i != j and (A[i] + A[j] == B). Check if any good pair exist or not.
 
-public class GoodPairChecker {
-    public static boolean goodPairExists(int[] A, int B) {
-        int n = A.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (A[i] + A[j] == B ) {
-                    return true;
-                }
-            }
+public class Main {
+  static int solve(int[] arr, int B){
+    int n = arr.length;
+    for(int i = 0 ; i < n ; i++){
+      for(int j = 0 ; j < n ; j++){
+        if(i==j) continue;
+        if(arr[i] + arr[j] == B){
+          return 1;
         }
-        return false;
+      }
     }
+    return 0;
+  }
+  public static void main(String[] args) {
+     int[] arr = {1,2,3,4};
+     int B = 7;
 
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4};
-        int B = 5;
-        System.out.println(goodPairExists(arr, B)); // true (2+3)
-    }
+     System.out.print(solve(arr,B));
+  }
 }
 
 // 2: Problem Description
