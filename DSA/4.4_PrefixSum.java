@@ -75,46 +75,88 @@ public class Main {
 // Each query consists of two integers B[i][0] and B[i][1].
 // For every query, your task is to find the count of even numbers in the range from A[B[i][0]] to A[B[i][1]].
 
+TC: O(n + q);
+SC : O(n);
 
-import java.util.Arrays;
+import java.util.*;
 public class Main {
-  static int[] coutnEvenInRange(int[] A,int[][] B){
-    int n = A.length;
-    int nQ = B.length;
-    int[] pf = new int[n];
-    if(A[0]%2 == 0){
-      pf[0] = A[0];
-    }else{
-      pf[0] = 0;
-    }
-  
-    for(int i = 1; i < n ; i++){
-     if(A[i]%2 == 0){
-       pf[i] = pf[i-1] + 1;
-     }else{
-      pf[i] = pf[i-1];
-     }
-    }
+  static void even(int[] arr,int[][] B){
+    int n = arr.length;
+    int nq = B.length;
 
-    int[] result = new int[nQ];
-    for(int i = 0 ; i < nQ ; i++){
-      int L = B[i][0];
-      int R = B[i][1];
-          if(L == 0){
-        result[i]= pf[R];
+    int[] pf = new int[n];
+     pf[0] = arr[0];
+    for(int i = 1 ; i < n ; i++){
+      if(i%2 == 0){
+        pf[i] = pf[i-1] + arr[i];
       }else{
-        result[i]= pf[R] - pf[L-1];
+        pf[i] = pf[i-1]; //skipping the odd elem
       }
     }
-    return result;
+
+    for(int i = 0 ; i < nq ; i++){
+      int L = B[i][0];
+      int R = B[i][1];
+      int sum = 0 ;
+      
+      if(L == 0){
+        sum = pf[R];
+
+      }else{
+        sum = pf[R] - pf[L - 1];
+      }
+      System.out.print(sum + " ");
+    }
+    
   }
   public static void main(String[] args) {
-    int[] A = {1,2,3,4,5};
-    int[][] B = {{0,2},{2,4},{1,4}};
+    int[] arr = {2,3,1,6,4,5};
+    int[][] B = {{1,3},{2,5},{0,5},{3,3}};
 
-    System.out.print(Arrays.toString(coutnEvenInRange(A,B)));
+    even(arr, B);
   }
 }
 
-//Doubt in above pb counting the even nums range
+//same way for odd indices
+
+import java.util.*;
+public class Main {
+  static void odd(int[] arr,int[][] B){
+    int n = arr.length;
+    int nq = B.length;
+
+    int[] pf = new int[n];
+     pf[0] = 0; // since arr[0] is even so we start with 0
+    for(int i = 1 ; i < n ; i++){
+      if(i % 2 == 0) {  // Changed from != to ==
+         pf[i] = pf[i-1];        // SKIP even indices
+          } else {
+              pf[i] = pf[i-1] + arr[i]; // ADD odd indices
+          }
+    }
+
+    for(int i = 0 ; i < nq ; i++){
+      int L = B[i][0];
+      int R = B[i][1];
+      int sum = 0 ;
+      
+      if(L == 0){
+        sum = pf[R];
+
+      }else{
+        sum = pf[R] - pf[L - 1];
+      }
+      System.out.print(sum + " ");
+    }
+    
+  }
+  public static void main(String[] args) {
+    int[] arr = {2,3,1,6,4,5};
+    int[][] B = {{1,3},{2,5},{0,5},{3,3}};
+
+    odd(arr, B);
+  }
+}
+
+
 //additional pb 2 on left to solve.
