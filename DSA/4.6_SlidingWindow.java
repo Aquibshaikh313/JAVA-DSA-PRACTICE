@@ -1,3 +1,25 @@
+//Print start and end of indices of subarrays of length k = 3; Given an array ,print start and end indices of subarray
+//totalSum of subarray
+public class Main {
+  static void indices(int[] arr){
+    int n = arr.length;
+    int k = 3;
+    for(int e = k-1; e< n ; e++){
+      int s = e-k+1;
+      System.out.println(s + " " + e);
+    }
+  }
+  public static void main(String[] args) {
+      int[] arr = {2,8,-1,4,2,3,4,5};
+
+      indices(arr);
+
+     
+      
+      
+  }
+}
+
 // 1: Problem Description
 // You are given an integer array C of size A. Now you need to find a subarray (contiguous elements) so that the sum of contiguous elements is maximum.
 // But the sum must not exceed B.
@@ -31,14 +53,14 @@ public class Solution {
 public class Main {
   static long subarraySum(int[] A){
     //we are taking long because of overcome overflow
-    long count = 0 ;
+    long totalSum = 0 ;
     for(int i = 0 ; i < A.length; i++){
       long s = i + 1;
       long e = A.length - i;
       long freq = s*e; 
-      count += (freq*A[i]);
+      totalSum += (freq*A[i]);
     }
-    return count;
+    return totalSum;
   }
   public static void main(String[] args) {
      int[] A = {1,2,3};
