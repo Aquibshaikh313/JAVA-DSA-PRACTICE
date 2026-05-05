@@ -123,4 +123,19 @@ public class Main {
   }
 }
 
+//lc pbs solved on the basis of above knowledge is : 169,414,136 and below one all should be revise while revising this lecture 
+//lc 268
+class Solution {
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        
 
+        for(int i = 0 ; i < n ; i++){
+            if(nums[i] != i){
+                return i;
+            }
+        }
+        return n;
+    }
+}
