@@ -132,7 +132,7 @@ public class Main {
   }
 }
 
-//pattern pb
+//pattern pb : triangle pattern 
 ____*
 ___**
 __***
@@ -156,5 +156,79 @@ public class Main {
      System.out.println();
    }
     
+  }
+}
+
+//Reverse Traingle 
+*****
+_****
+__***
+___**
+____*
+
+
+public class Main {
+  public static void main(String[] args) {
+   int n = 5;
+  
+  for(int i = 0 ; i < n ; i++){
+    for(int j = 1 ; j <= i ; j++){
+      System.out.print("_" + "");
+    }
+
+    for(int j = 1 ; j <= n - i ; j++){
+      System.out.print("*");
+    }
+    System.out.println();
+  }
+
+   
+  }
+}
+
+//Diamond pattern
+**********
+****__****
+***____***
+**______**
+*________*
+*________*
+**______**
+***____***
+****__****
+**********
+
+
+public class Main {
+  public static void main(String[] args) {
+      int n = 5;
+
+      for(int i = 1 ; i <=n ; i++){
+        for(int j = 1; j <= n + 1 - i ; j++){
+          System.out.print("*");
+        }
+        for(int j = 1 ; j <= 2*i - 2 ; j++){
+          System.out.print("_");
+        }
+          for(int j = 1; j <= n + 1 - i ; j++){
+          System.out.print("*");
+        }
+        
+        System.out.println();
+      }
+
+      for(int i = 1; i <= n ; i++){
+        for(int j = 1; j <= i ; j++){
+          System.out.print("*");
+        }
+        for(int j = 1; j <= 2*(n-i); j++){
+          System.out.print("_");
+        }
+        for(int j = 1; j<= i ; j++){
+          System.out.print("*");
+        }
+
+        System.out.println();
+      }
   }
 }
