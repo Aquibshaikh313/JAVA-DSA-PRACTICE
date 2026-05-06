@@ -78,6 +78,15 @@ public class Main {
            
     }
 
+    static void printMatrix(int[][] mat){
+      for(int i = 0 ; i < mat.length; i++){
+        for(int j = 0 ; j < mat[0].length; j++){
+          System.out.print(mat[i][j] + " ");
+        }
+        System.out.println();
+      }
+    }
+
   public static void main(String[] args) {
      Scanner sc = new Scanner(System.in);
      
@@ -98,13 +107,8 @@ public class Main {
     }
     
     int[][] result = solve(mat);
-
-    for(int i = 0 ; i < result.length ; i++){
-      for(int j = 0 ; j < result[0].length ; j++){
-        System.out.print(result[i][j] + " ");
-      }
-      System.out.println();
-    }
+    printMatrix(result);
+  
     
   }
 }

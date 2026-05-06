@@ -67,7 +67,7 @@ public class Main {
   static void insertSort(int[] A){
     int n = A.length;
 
-    for(int i = 0 ; i < n ; i++){
+    for(int i = 1 ; i < n ; i++){
       int currElem = A[i];
       int j = i - 1;
       
