@@ -4,7 +4,7 @@ public class Main {
   static int countsetBits(int N){
     int count = 0;
     for(int i = 0 ; i < 32 ; i++){
-      if((N & (1<<i)) != 0){
+      if((N & (1<<i)) > 0){
         count++;
       }
     }
@@ -22,7 +22,7 @@ public class Main {
 
     // Method to check if the i-th bit is set
     static boolean checkBit(int N, int i) {
-        return (N & (1 << i)) != 0;
+        return (N & (1 << i)) > 0;
     }
 
     // Count number of set bits
@@ -68,6 +68,25 @@ public class Main {
      
   }
 }
+
+// approach 2 for above pb
+
+
+public class Main {
+  static long passCode(int a, int b , int c){
+  
+  return ((1<<b) - 1) << c;
+
+  }
+  public static void main(String[] args) {
+      int a = 4, b = 3,  c = 2;
+
+      System.out.print(passCode(a,b,c));
+
+     
+  }
+}
+
 
 //Assignments**********
 //assingment pb 1

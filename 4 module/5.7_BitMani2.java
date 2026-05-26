@@ -13,7 +13,7 @@ public class Main {
 
      System.out.print(repeArr(a));
   }
-} // TC: O(N^2)
+} // TC: O(N)
 
 
 
@@ -27,7 +27,7 @@ public class Main {
     //find any set bit in xorOfAll
     int bit = 0 ;
     for( ; bit < 32 ; bit++){
-      if((ans & (1 << bit)) != 0){
+      if((ans & (1 << bit)) > 0){
         break;
       }
     }
@@ -35,7 +35,7 @@ public class Main {
     //divide elements into 2grps 
     int num1= 0,num2 = 0;
     for(int i = 0 ; i < n ; i++){
-      if((bit & (1 << a[i])) != 0){
+      if((bit & (1 << a[i])) > 0){
         num1 ^= a[i];
       }else{
         num2 ^= a[i];
@@ -52,6 +52,7 @@ public class Main {
 }
 
 //integer occuring thrice
+TC : O(N) & SC: O(1);
 
 public class Main {
   static int noOccuringThrice(int[] arr){
@@ -83,7 +84,7 @@ public class Main {
   }
 }//output 9
 
-
+// two diffent elemts :
 
 public class Main {
   static void xorOfAll(int[] arr){
@@ -112,7 +113,7 @@ public class Main {
   }
 
   System.out.println(num1);
-  System.out.print(num2);
+  System.out.println    (num2);
 
 
   }
@@ -124,5 +125,24 @@ public class Main {
     //  System.out.print(xorOfAll(arr))/;
 
      
+  }
+}
+
+
+//Reversing Bit 32 leetcode 190
+public class Main {
+  static int reverse(int N){
+    int ans = 0;
+    for(int i = 0 ; i < 32; i++){
+     if((N&(1<<i)) != 0){
+     ans = ans | (1 << (31 - i));
+     }
+    }
+    return ans;
+  }
+  public static void main(String[] args) {
+      int N = 12;
+
+      System.out.print(reverse(N));
   }
 }
