@@ -77,3 +77,26 @@ public class Main {
      
   }
 }
+
+
+
+//Reversing a string using stringBuilder 
+
+public class Main {
+  static String reverse(String str){
+    int n = str.length();
+    StringBuilder sb = new StringBuilder();
+
+    for(int i = n-1 ; i>=0 ; i--){
+      sb.append(str.charAt(i));
+    }
+    return sb.toString();
+  }
+  public static void main(String[] args) {
+      String str = "Scaler";
+      
+      String result = reverse(str);
+
+      System.out.print(result);
+  }
+}
