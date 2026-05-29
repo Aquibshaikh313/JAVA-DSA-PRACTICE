@@ -34,7 +34,7 @@ public class Main {
 }
 
 
-//find the length of longest palindrome
+//find the length of longest palindrome substring
 public class Main {
   public static int longPalindr(char[] str){
 
@@ -99,4 +99,36 @@ public class Main {
 
       System.out.print(result);
   }
+}
+
+//Reversing entrire string words:
+
+public class Main {
+
+    static String reverse(String str) {
+
+        // creating new StringBuilder
+        StringBuilder sb = new StringBuilder();
+
+        String[] words = str.split(" ");
+
+        for (int i = words.length - 1; i >= 0; i--) {
+
+            sb.append(words[i]);
+
+            // add space if not last word
+            if (i != 0) {
+                sb.append(" ");
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+
+        String str = "Hello my name is aquib";
+
+        System.out.print(reverse(str));
+    }
 }
