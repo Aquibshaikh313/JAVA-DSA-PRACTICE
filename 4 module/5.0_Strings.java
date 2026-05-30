@@ -132,3 +132,38 @@ public class Main {
         System.out.print(reverse(str));
     }
 }
+
+//leetcode 125
+class Solution {
+    public boolean isPalindrome(String s) {
+     
+            int start = 0 ; 
+            int end = s.length() - 1;
+
+            while(start < end){
+                char left = s.charAt(start);
+                char right = s.charAt(end);
+            
+            //skipping the left characters symbols
+               if(!Character.isLetterOrDigit(left)){
+                start++;
+                continue;
+               }
+
+            //skipping right characters symbol
+            if(!Character.isLetterOrDigit(right)){
+                end--;
+                continue;
+            }
+
+               if(Character.toLowerCase(left) != Character.toLowerCase(right)){
+               return false;
+               }
+               start++; 
+               end--;
+
+            }
+        
+        return true;
+    }
+}
