@@ -167,3 +167,35 @@ class Solution {
         return true;
     }
 }
+
+//consecutive element : 
+
+public class Main {
+ static String consCount(String str){
+  StringBuilder sb = new StringBuilder();
+ int count  = 1;
+
+ for(int i = 0 ; i < str.length() - 1; i++){
+  if(str.charAt(i) == str.charAt(i+1)){
+    count++;
+  }else{
+    sb.append(str.charAt(i));
+    sb.append(count);
+    count =1;
+  }
+ }
+ 
+
+ // the last element
+ sb.append(str.charAt(str.length() - 1));
+ sb.append(count);
+return sb.toString();
+ 
+ }
+  public static void main(String[] args) {
+      String str = "abcd";
+    
+    // removeDigits(str);
+    System.out.print(consCount(str));
+  }
+}
