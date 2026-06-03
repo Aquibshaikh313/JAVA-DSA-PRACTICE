@@ -13,7 +13,7 @@ public class Main {
       count++;
      }else if(arr[i] != maj){
       count--;
-     }else if(arr[i] == maj){
+     }else if(arr[i] == maj){ 
       count++;
      }
     }
