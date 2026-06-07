@@ -1,201 +1,196 @@
-// Given a char[] consisting of only alphabets (either lowercase or uppercase).Print all the characters of string in such a way that for all the lowercase charcter,print its uppercase character and viceversa.
+# String & Character Array Problems in Java
 
+## 1. Toggle Case of Characters
 
-public class Main {
-  public static void toggleCase(char[] str){
-    int n = str.length;
+```java
+public static void toggleCase(char[] str) {
     int diff = 'a' - 'A';
-    for(int i = 0 ; i < n ; i++){
-      //check for uppercase
-      if(str[i] >= 'A' && str[i] <= 'Z'){
-        //uppercase
-        // System.out.print((char)(str[i] + 32));
-        str[i] = (char)(str[i] + diff);
-      }else{
-        //lowercase
-      //  System.out.print((char)(str[i]-32));
-      str[i] = (char)(str[i] - diff);
-      }
+
+    for (int i = 0; i < str.length; i++) {
+        if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = (char)(str[i] + diff);
+        } else {
+            str[i] = (char)(str[i] - diff);
+        }
     }
-  }
-  public static void main(String[] args) {
-  
-  char[] str = {'H', 'e', 'L', 'l','o'};
-
-  toggleCase(str);
-
-  for(int i = 0 ; i < str.length ; i++){
-    System.out.print(str[i]);
-
-  }
-
-     
-  }
 }
+```
 
+**Input:** `{'H','e','L','l','o'}`
+**Output:** `hElLO`
 
-//find the length of longest palindrome substring
-public class Main {
-  public static int longPalindr(char[] str){
+---
 
+## 2. Length of Longest Palindromic Substring
+
+```java
+public static int longPalindr(char[] str) {
     int n = str.length;
     int ans = Integer.MIN_VALUE;
 
-    for(int i = 0 ; i < n ; i++ ){
-      //checking for odd p1 = i & p2 = i
-      int p2 = i,p1 = i;
-      ans = Math.max(ans,expand(str,p1,p2,n));
+    // Odd length palindrome
+    for (int i = 0; i < n; i++) {
+        ans = Math.max(ans, expand(str, i, i, n));
     }
 
-    for(int i = 0 ; i < n  ; i++ ){
-      //checking for even p1 = i & p2 = i+1
-      int p2 = i+1,p1 = i;
-      ans = Math.max(ans,expand(str,p1,p2,n));
+    // Even length palindrome
+    for (int i = 0; i < n; i++) {
+        ans = Math.max(ans, expand(str, i, i + 1, n));
     }
 
     return ans;
+}
 
-   
-  }
-  static int expand(char[] str , int p1, int p2, int n){
-    while(p1>=0 && p2 < n && str[p1] == str[p2]){
-      p1--;
-      p2++;
+static int expand(char[] str, int p1, int p2, int n) {
+    while (p1 >= 0 && p2 < n && str[p1] == str[p2]) {
+        p1--;
+        p2++;
     }
     return p2 - p1 - 1;
-  }
-  public static void main(String[] args) {
-  
-  char[] str = {'a', 'b', 'c', 'd','c','k','k','c','d'};
-
-  longPalindr(str);
-   int ans = longPalindr(str);
-        System.out.println("Length of longest palindrome: " + ans);
-
-  
-
-     
-  }
 }
+```
 
+**Time Complexity:** O(N²)
+**Space Complexity:** O(1)
 
+---
 
-//Reversing a string using stringBuilder 
+## 3. Reverse a String Using StringBuilder
 
-public class Main {
-  static String reverse(String str){
-    int n = str.length();
+```java
+static String reverse(String str) {
     StringBuilder sb = new StringBuilder();
 
-    for(int i = n-1 ; i>=0 ; i--){
-      sb.append(str.charAt(i));
+    for (int i = str.length() - 1; i >= 0; i--) {
+        sb.append(str.charAt(i));
     }
+
     return sb.toString();
-  }
-  public static void main(String[] args) {
-      String str = "Scaler";
-      
-      String result = reverse(str);
-
-      System.out.print(result);
-  }
 }
+```
 
-//Reversing entrire string words:
+**Input:** `"Scaler"`
+**Output:** `"relacS"`
 
-public class Main {
+---
 
-    static String reverse(String str) {
+## 4. Reverse Words of a String
 
-        // creating new StringBuilder
-        StringBuilder sb = new StringBuilder();
+```java
+static String reverseWords(String str) {
+    StringBuilder sb = new StringBuilder();
 
-        String[] words = str.split(" ");
+    String[] words = str.split(" ");
 
-        for (int i = words.length - 1; i >= 0; i--) {
+    for (int i = words.length - 1; i >= 0; i--) {
+        sb.append(words[i]);
 
-            sb.append(words[i]);
+        if (i != 0) {
+            sb.append(" ");
+        }
+    }
 
-            // add space if not last word
-            if (i != 0) {
-                sb.append(" ");
-            }
+    return sb.toString();
+}
+```
+
+**Input:** `"I love Java"`
+**Output:** `"Java love I"`
+
+---
+
+## 5. Valid Palindrome (LeetCode 125)
+
+```java
+public boolean isPalindrome(String s) {
+    int start = 0;
+    int end = s.length() - 1;
+
+    while (start < end) {
+
+        char left = s.charAt(start);
+        char right = s.charAt(end);
+
+        if (!Character.isLetterOrDigit(left)) {
+            start++;
+            continue;
         }
 
-        return sb.toString();
+        if (!Character.isLetterOrDigit(right)) {
+            end--;
+            continue;
+        }
+
+        if (Character.toLowerCase(left) != Character.toLowerCase(right)) {
+            return false;
+        }
+
+        start++;
+        end--;
     }
 
-    public static void main(String[] args) {
-
-        String str = "Hello my name is aquib";
-
-        System.out.print(reverse(str));
-    }
+    return true;
 }
+```
 
-//leetcode 125
-class Solution {
-    public boolean isPalindrome(String s) {
-     
-            int start = 0 ; 
-            int end = s.length() - 1;
+**Example:**
+Input: `"A man, a plan, a canal: Panama"`
+Output: `true`
 
-            while(start < end){
-                char left = s.charAt(start);
-                char right = s.charAt(end);
-            
-            //skipping the left characters symbols
-               if(!Character.isLetterOrDigit(left)){
-                start++;
-                continue;
-               }
+**Time Complexity:** O(N)
 
-            //skipping right characters symbol
-            if(!Character.isLetterOrDigit(right)){
-                end--;
-                continue;
-            }
+---
 
-               if(Character.toLowerCase(left) != Character.toLowerCase(right)){
-               return false;
-               }
-               start++; 
-               end--;
+## 6. Count Consecutive Characters (Run-Length Encoding)
 
-            }
-        
-        return true;
+```java
+static String consCount(String str) {
+
+    StringBuilder sb = new StringBuilder();
+    int count = 1;
+
+    for (int i = 0; i < str.length() - 1; i++) {
+
+        if (str.charAt(i) == str.charAt(i + 1)) {
+            count++;
+        } else {
+            sb.append(str.charAt(i));
+            sb.append(count);
+            count = 1;
+        }
     }
-}
 
-//consecutive element : 
-
-public class Main {
- static String consCount(String str){
-  StringBuilder sb = new StringBuilder();
- int count  = 1;
-
- for(int i = 0 ; i < str.length() - 1; i++){
-  if(str.charAt(i) == str.charAt(i+1)){
-    count++;
-  }else{
-    sb.append(str.charAt(i));
+    sb.append(str.charAt(str.length() - 1));
     sb.append(count);
-    count =1;
-  }
- }
- 
 
- // the last element
- sb.append(str.charAt(str.length() - 1));
- sb.append(count);
-return sb.toString();
- 
- }
-  public static void main(String[] args) {
-      String str = "abcd";
-    
-    // removeDigits(str);
-    System.out.print(consCount(str));
-  }
+    return sb.toString();
 }
+```
+
+**Input:** `"aaabbcccc"`
+**Output:** `"a3b2c4"`
+
+---
+
+# Quick Revision Table
+
+| Problem            | Technique                 |
+| ------------------ | ------------------------- |
+| Toggle Case        | ASCII Difference          |
+| Longest Palindrome | Expand Around Center      |
+| Reverse String     | StringBuilder             |
+| Reverse Words      | Split + Traverse Backward |
+| Valid Palindrome   | Two Pointers              |
+| Consecutive Count  | Run-Length Encoding       |
+
+### Must-Know String Concepts
+
+* `charAt(i)`
+* `toLowerCase()`
+* `toUpperCase()`
+* `Character.isLetterOrDigit()`
+* `StringBuilder`
+* `split()`
+* Two Pointer Technique
+* Expand Around Center
+* ASCII Manipulation
