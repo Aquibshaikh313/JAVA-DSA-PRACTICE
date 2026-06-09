@@ -1,6 +1,7 @@
 
 
-
+// TC: O(log n), SC: O(log n)
+//below method is also known as binary exponentiaion / fast exponentiation
 public class Main {
   static long pow(int a, int n){
     if(n==0){return 1;}
