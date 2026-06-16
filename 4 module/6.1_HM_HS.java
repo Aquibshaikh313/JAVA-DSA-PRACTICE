@@ -24,7 +24,7 @@ public class Main {
         //insert key,value+1
         hm.put(arr[i],value+1);
            
-        }else{
+        }else{  
           //if element is occuring first time
          hm.put(arr[i],1);
         }
