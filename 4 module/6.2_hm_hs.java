@@ -42,3 +42,73 @@ public class Main {
 
     }
 }
+
+
+
+
+import java.util.*;
+public class Main {
+  static boolean targetSum(int[] arr, int k){
+    int n = arr.length;
+    HashSet<Integer> hs = new HashSet<>();
+
+    for(int i = 0 ; i < n ; i++){
+      int target = k - arr[i];
+      if(hs.contains(target)){
+        return true;
+      }
+
+      hs.add(arr[i]);
+    }
+    return false;
+  }
+
+  public static void main(String[] args) {
+
+    int[] arr = {1,2,3,4,5,6};
+    int k = 7;
+    
+    System.out.print(targetSum(arr,k));
+  }
+}
+
+//counting pairs whose sum is equal to k
+import java.util.*;
+public class Main {
+  static int countPairs(int[] arr,int k){
+    int n = arr.length;
+    int count = 0;
+
+    HashMap<Integer,Integer> hm = new HashMap<>();
+    
+    for(int i = 0 ; i < n ; i++){
+      int target = k - arr[i];
+      if(hm.containsKey(target)){
+        int freq = hm.get(target);
+        count += freq;
+      }
+
+       //insert arr[i]
+      if(hm.containsKey(arr[i])){
+        int freq = hm.get(arr[i]);
+        hm.put(arr[i],freq+1);
+      }else{
+        hm.put(arr[i],1);
+      }
+    }
+
+    return count;
+
+   
+   
+  }
+  
+
+  public static void main(String[] args) {
+
+    int[] arr = {2,5,2,5,8,5,2,8};
+    int k = 10;
+    
+    System.out.print(countPairs(arr,k));
+  }
+}
