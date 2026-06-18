@@ -1,5 +1,30 @@
 
-//find the freq of elements present in queries
+//find the freq of elements present in queries brute force approach
+// Time Complexity: O(N × Q)
+public class Main {
+  static void findQueries(int[] arr, int[] queries){
+    
+    for(int i = 0 ; i < queries.length; i++){
+      int count = 0 ;
+      for(int j = 0 ; j < arr.length ; j++){
+        if(arr[j] == queries[i]){
+          count++;
+        }
+      }
+       System.out.println(queries[i] + " -> " + count);
+    }
+   
+  }
+  public static void main(String[] args) {
+     
+     int[] arr = {2, 3, 2, 5, 6, 2, 3, 5, 5};
+     int[] queries = {2, 3, 5, 6};
+
+     findQueries(arr,queries);
+  }
+}
+
+//optimize approach using hashmap,hashset
 TC: O(q+n);
 SC :O(N);
 import java.util.*;
