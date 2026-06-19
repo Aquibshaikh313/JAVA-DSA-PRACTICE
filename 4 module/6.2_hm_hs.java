@@ -45,7 +45,7 @@ public class Main {
 
 
 
-
+// pair equal to target
 import java.util.*;
 public class Main {
   static boolean targetSum(int[] arr, int k){
@@ -59,6 +59,7 @@ public class Main {
       }
 
       hs.add(arr[i]);
+      System.out.print(hs); //hs -> stores the values inside hashset until the condition is met
     }
     return false;
   }
@@ -71,6 +72,7 @@ public class Main {
     System.out.print(targetSum(arr,k));
   }
 }
+
 
 //counting pairs whose sum is equal to k
 import java.util.*;

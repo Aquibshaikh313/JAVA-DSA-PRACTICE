@@ -94,6 +94,32 @@ public class Main {
   }
 }
 
+
+//generating all the substring by brute force TC:O(n^3)
+import java.util.*;
+public class Main {
+  static void genSubstring(String str){
+    int n = str.length();
+    
+    
+    for(int s = 0 ; s < n ; s++){
+      for(int e = s ; e <n ; e++){
+        for(int k = s ; k <= e ; k++){
+          System.out.print(str.charAt(k));
+        }
+        System.out.println();
+      
+      }
+    }
+  }
+  public static void main(String[] args) {
+      String str = "pwwkew";
+
+     genSubstring(str);
+
+  }
+}
+
 // 3. Longest Substring Without Repeating Characters
 // Problem Statement
 
