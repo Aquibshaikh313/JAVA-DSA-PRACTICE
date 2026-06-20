@@ -114,3 +114,36 @@ public class Main {
     System.out.print(countPairs(arr,k));
   }
 }
+
+// prefix sum == 0
+import java.util.*;
+public class Main {
+  static boolean solve(int[] arr){
+    int n = arr.length;
+    int[] pf = new int[n];
+     
+     pf[0] = arr[0];
+     HashSet<Integer> hs = new HashSet<>();
+     
+     hs.add(pf[0]);
+
+     for(int i = 1; i < n ; i++){
+      pf[i] = pf[i-1] + arr[i];
+
+       hs.add(pf[i]);
+     }
+     
+    
+
+     if(hs.size() != pf.length){
+      return true;
+     }
+     return false;
+
+  }
+  public static void main(String[] args) {
+      int[] arr = {2,2,1,-3,4,3,1,-2,-3,2};
+
+      System.out.print(solve(arr));
+  }
+}
