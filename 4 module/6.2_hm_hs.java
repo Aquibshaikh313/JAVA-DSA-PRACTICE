@@ -102,7 +102,6 @@ public class Main {
     return count;
 
    
-   
   }
   
 
@@ -145,5 +144,40 @@ public class Main {
       int[] arr = {2,2,1,-3,4,3,1,-2,-3,2};
 
       System.out.print(solve(arr));
+  }
+}
+
+
+//Subarray sum equal to k
+
+import java.util.*;
+
+public class Main {
+  static boolean subarrSumEquToK(int[] arr,int k){
+    int n = arr.length;
+    HashSet<Long> hs = new HashSet<>();
+    
+    //Handling edge case
+    hs.add(0L); 
+    long a = 0; //prefix
+
+    for(int i = 0 ; i < n ; i++){
+      a += arr[i];
+      long target = a - k;
+
+      if(hs.contains(target)){
+        return true;
+      }
+      hs.add(a);
+
+    }
+    return false;
+    
+  }
+  public static void main(String[] args) {
+     int[] arr = {2,3,9,-4,1};
+     int k = 10;
+
+     System.out.print(subarrSumEquToK(arr,k));
   }
 }
