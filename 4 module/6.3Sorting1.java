@@ -2,7 +2,7 @@
 //find the smallest number that can be formed by rearranging the given number(digits) in an array
 // Note : 0 <= arr[i] <= 9
 TC:O(n) SC:O(1);
-below method is also know as "Count Sort"
+// below method is also know as "Count Sort"
 import java.util.*;
 public class Main {
   static int[] solve(int[] arr){
