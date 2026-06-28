@@ -160,7 +160,7 @@ public class Main {
         return arr[m];
       }
       if(arr[m] == arr[m-1]){
-        m = m - 1;
+        m = m - 1; // m--;
       }
       if(m % 2 == 0 ){
         low = m + 2 ;
