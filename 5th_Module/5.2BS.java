@@ -50,7 +50,7 @@ public class Main {
 public class Main {
   static int squareRoot(int n){
     //one edege case
-    if(x == 0) return 0;
+    if(n == 0) return 0;
     int low= 1;
     int high = n;
     int ans = 0;
