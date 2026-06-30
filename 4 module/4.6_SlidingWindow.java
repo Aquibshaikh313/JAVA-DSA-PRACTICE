@@ -198,3 +198,36 @@ public class Main {
      System.out.print(totalSum(A));
   }
 }
+
+
+// Leetcode 1358. Number of Substrings Containing All Three Characters
+
+class Solution {
+    public int numberOfSubstrings(String s) {
+        
+        int ans = 0 ;
+        int lastA = -1;
+        int lastB = -1;
+        int lastC = -1;
+
+        for(int i = 0 ; i < s.length() ; i++){
+            char ch = s.charAt(i);
+
+            if(ch == 'a'){
+                lastA= i;
+            }
+            if(ch == 'b'){
+                lastB = i;
+            }
+            if(ch == 'c'){
+                lastC = i;
+            }
+
+            if (lastA != -1 && lastB != -1 && lastC != -1) {
+                ans += Math.min(lastA, Math.min(lastB, lastC)) + 1;
+            }
+        }
+
+        return ans;
+    }
+}
